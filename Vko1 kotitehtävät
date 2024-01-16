@@ -1,0 +1,125 @@
+TEHTÄVÄ 1
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    
+    srand(time(NULL));
+
+    int etsittavaLuku = rand() % 20 + 1;
+
+    int arvaus;
+    int peliJatkuu = 1;
+
+    printf("Tervetuloa arvauspeliin! Arvaa luku väliltä 1-20.\n");
+
+    while (peliJatkuu) {
+        printf("Anna arvauksesi: ");
+        scanf("%d", &arvaus);
+
+        if (arvaus < 1 || arvaus > 20) {
+            printf("Arvauksen tulee olla välillä 1-20.\n");
+        } else if (arvaus < etsittavaLuku) {
+            printf("Arvattava luku on suurempi. Yritä uudelleen.\n");
+        } else if (arvaus > etsittavaLuku) {
+            printf("Arvattava luku on pienempi. Yritä uudelleen.\n");
+        } else {
+            printf("Onneksi olkoon! Arvasit oikein.\n");
+            peliJatkuu = 0;
+        }
+    }
+
+    return 0;
+}
+
+TEHTÄVÄ 2
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void pelaaArvauspeli();
+
+int main() {
+    pelaaArvauspeli();
+
+    return 0;
+}
+
+void pelaaArvauspeli() {
+    
+    srand(time(NULL));
+
+    int etsittavaLuku = rand() % 20 + 1;
+
+    int arvaus;
+    int peliJatkuu = 1;
+
+    printf("Tervetuloa arvauspeliin! Arvaa luku väliltä 1-20.\n");
+
+    while (peliJatkuu) {
+        printf("Anna arvauksesi: ");
+        scanf("%d", &arvaus);
+
+        if (arvaus < 1 || arvaus > 20) {
+            printf("Arvauksen tulee olla välillä 1-20.\n");
+        } else if (arvaus < etsittavaLuku) {
+            printf("Arvattava luku on suurempi. Yritä uudelleen.\n");
+        } else if (arvaus > etsittavaLuku) {
+            printf("Arvattava luku on pienempi. Yritä uudelleen.\n");
+        } else {
+            printf("Onneksi olkoon! Arvasit oikein.\n");
+            peliJatkuu = 0;
+        }
+    }
+}
+
+TEHTÄVÄ 3
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int game(int maxnum);
+
+int main() {
+    
+    int arvaustenMaara = game(40);
+    printf("Onneksi olkoon! Arvasit oikein. Arvausten määrä: %d\n", arvaustenMaara);
+
+    return 0;
+}
+
+int game(int maxnum) {
+    
+    srand(time(NULL));
+
+
+    int etsittavaLuku = rand() % maxnum + 1;
+
+    int arvaus;
+    int arvaustenMaara = 0;
+    int peliJatkuu = 1;
+
+    printf("Tervetuloa arvauspeliin! Arvaa luku väliltä 1-%d.\n", maxnum);
+
+    while (peliJatkuu) {
+        printf("Anna arvauksesi: ");
+        scanf("%d", &arvaus);
+        arvaustenMaara++;
+
+        if (arvaus < 1 || arvaus > maxnum) {
+            printf("Arvauksen tulee olla välillä 1-%d.\n", maxnum);
+        } else if (arvaus < etsittavaLuku) {
+            printf("Arvattava luku on suurempi. Yritä uudelleen.\n");
+        } else if (arvaus > etsittavaLuku) {
+            printf("Arvattava luku on pienempi. Yritä uudelleen.\n");
+        } else {
+            peliJatkuu = 0;
+        }
+    }
+
+    return arvaustenMaara;
+}
